@@ -1,0 +1,85 @@
+// Find the middle element of linked list.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+
+    Node(int x){
+        this->data = x;
+        this->next = NULL;
+    }
+};
+
+int getlength(Node* head){
+    int l=0;
+    while(head!=NULL){
+        head = head->next;
+        l++;
+    }
+    return l;
+}
+// Node* middle_element(Node* head, int l){
+
+//     //  finding the lenght of linked list
+//     Node* temp = head;
+//     int ans = l/2;
+//     int cnt = 0;
+//     while(cnt<ans){
+//         temp = temp->next;
+//         cnt++;
+//     }
+//     return temp;
+// }
+
+// Another method to find middle element with better time complexity
+
+Node* middle_element(Node* head, int l){
+    Node* fast = head;
+    Node* slow = head;
+
+    while(fast!=NULL){
+        fast = fast->next;
+        if(fast!=NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+    }
+    return slow;
+}
+
+void print(Node* head){
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head = head->next;
+    }
+    cout<<endl;
+}
+
+int main(){
+    Node* n1 = new Node(11);
+    Node* n2 = new Node(22);
+    Node* n3 = new Node(33);
+    Node* n4 = new Node(44);
+    Node* n5 = new Node(55);
+    Node* n6 = new Node(66);
+
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+    n4->next = n5;
+    n5->next = n6;
+    n6->next = NULL;
+
+
+    Node* head = n1;
+    print(head);
+
+    int l = getlength(head);
+    cout<<middle_element(head,l)->data;
+    
+    return 0;
+}
