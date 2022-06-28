@@ -35,7 +35,7 @@ int getlength(Node* head){
 //     return temp;
 // }
 
-// Another method to find middle element with better time complexity
+// Another method to find middle element with better time complexity using slow and fast pointers
 
 Node* middle_element(Node* head, int l){
     Node* fast = head;
